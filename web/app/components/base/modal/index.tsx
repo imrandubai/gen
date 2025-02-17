@@ -29,7 +29,7 @@ export default function Modal({
 }: IModal) {
   return (
     <Transition appear show={isShow} as={Fragment}>
-      <Dialog as="div" className={classNames('relative z-50', wrapperClassName)} onClose={onClose}>
+      <Dialog as="div" className={classNames('relative z-[60]', wrapperClassName)} onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -39,7 +39,7 @@ export default function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-background-overlay-fullscreen" />
+          <div className="fixed inset-0 bg-background-overlay" />
         </Transition.Child>
 
         <div

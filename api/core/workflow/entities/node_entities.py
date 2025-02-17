@@ -17,6 +17,7 @@ class NodeRunMetadataKey(StrEnum):
     TOTAL_PRICE = "total_price"
     CURRENCY = "currency"
     TOOL_INFO = "tool_info"
+    AGENT_LOG = "agent_log"
     ITERATION_ID = "iteration_id"
     ITERATION_INDEX = "iteration_index"
     PARALLEL_ID = "parallel_id"
@@ -36,9 +37,9 @@ class NodeRunResult(BaseModel):
     status: WorkflowNodeExecutionStatus = WorkflowNodeExecutionStatus.RUNNING
 
     inputs: Optional[Mapping[str, Any]] = None  # node inputs
-    process_data: Optional[dict[str, Any]] = None  # process data
+    process_data: Optional[Mapping[str, Any]] = None  # process data
     outputs: Optional[Mapping[str, Any]] = None  # node outputs
-    metadata: Optional[dict[NodeRunMetadataKey, Any]] = None  # node metadata
+    metadata: Optional[Mapping[NodeRunMetadataKey, Any]] = None  # node metadata
     llm_usage: Optional[LLMUsage] = None  # llm usage
 
     edge_source_handle: Optional[str] = None  # source handle id of node with multiple branches
@@ -48,3 +49,8 @@ class NodeRunResult(BaseModel):
 
     # single step node run retry
     retry_index: int = 0
+
+
+class AgentNodeStrategyInit(BaseModel):
+    name: str
+    icon: str | None = None

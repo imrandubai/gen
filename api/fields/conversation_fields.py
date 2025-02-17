@@ -1,4 +1,4 @@
-from flask_restful import fields
+from flask_restful import fields  # type: ignore
 
 from fields.member_fields import simple_account_fields
 from libs.helper import TimestampField
@@ -93,10 +93,6 @@ model_config_fields = {
     "user_input_form": fields.Raw,
     "pre_prompt": fields.String,
     "agent_mode": fields.Raw,
-}
-
-simple_configs_fields = {
-    "prompt_template": fields.String,
 }
 
 simple_model_config_fields = {
@@ -211,15 +207,4 @@ conversation_infinite_scroll_pagination_fields = {
     "limit": fields.Integer,
     "has_more": fields.Boolean,
     "data": fields.List(fields.Nested(simple_conversation_fields)),
-}
-
-conversation_with_model_config_fields = {
-    **simple_conversation_fields,
-    "model_config": fields.Raw,
-}
-
-conversation_with_model_config_infinite_scroll_pagination_fields = {
-    "limit": fields.Integer,
-    "has_more": fields.Boolean,
-    "data": fields.List(fields.Nested(conversation_with_model_config_fields)),
 }
